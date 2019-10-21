@@ -15,13 +15,30 @@ Ball ballOne;
 Ball ballTwo;
 Ball balls[] = new Ball[ballNumber];
 
+Table gotTable;
+
 void setup() {
   size(200, 200);
   background(0, 0, 255);
+  
+  gotTable = loadTable("GOT.csv", "header");
+  
+  println(gotTable.getRowCount() + " total rows in table");
+  
+  for(TableRow row : gotTable.rows()) {
+    float score = row.getFloat("score");
+    String name = row.getString("short_name");
+    String category = row.getString("category");
+
+    if(score > 1.1) {
+      println(name + " has a score of " + score);
+    }
+  }
+  
   for(int i=0; i < balls.length; i++){
     randPosX = (int)random(15,185);//(int)Math.random() * 169 + 16;
     randPosY = (int)random(15,185);//(int)Math.random() * 169 + 16;
-    balls[i] = new Ball(randPosX, randPosY, 30);
+    balls[i] = new Ball(randPosX, randPosY, score*10);
   }  
   //ballOne = new Ball(100, 100, 30);
   //ballTwo = new Ball(20, 50, 30);
