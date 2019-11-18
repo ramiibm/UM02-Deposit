@@ -1,0 +1,530 @@
+code,category,translation
+110000,餐饮,Restaurant
+110100,中餐厅,Chinese Restaurant
+110200,西餐厅,Western Restaurant
+110300,快餐厅,Snack Bar
+110400,自助餐厅,Cafeteria
+110500,休闲餐饮场所,Leisure Restaurant
+110501,冷饮店,Cold drinks shop
+110502,甜品店,Dessert shop
+110503,咖啡馆,Café
+110504,茶馆,Teahouse
+110600,小吃店,Snack Bar
+110700,外卖店,Takeaway
+119900,其他餐饮场所,Other restaurants
+120000,住宿,Get accommodation
+120100,星级酒店,Star rated hotel
+120200,普通酒店,Ordinary Hotel
+120300,经济连锁酒店,Economy Chain Hotel
+120400,旅馆/招待所,Hotels/Hostels
+120401,招待所,Guesthouse
+120402,家庭旅馆/民宿,Family hotel/lodging
+120403,青年旅社,Youth Hosted
+129900,其他住宿,Other accommodation
+130000,购物,Shopping
+130100,商场,Market
+130101,购物中心,Shopping Mall
+130102,普通商场/百货大楼,Ordinary shopping malls/department stores
+130103,免税店,Duty-free store
+130200,超市便利店,Supermarket Convenience Store
+130201,超市,Supermarket
+130202,便利店,Convenience Store
+130300,综合市场,Integrated market
+130301,批发市场,Wholesale market
+130302,旧货市场,Second-hand market
+130303,小商品市场,fancy fair
+130304,农副产品市场,Agricultural by-product market
+130305,果品市场,Fruit market
+130306,蔬菜市场,Vegetable market
+130307,水产海鲜市场,Aquatic seafood market
+130400,食品-饮料及烟草制品专门零售店,Food-beverage and tobacco products retail stores
+130401,面包房/糕点屋,Bakery/Cake House
+130402,衣贸产品综合销售店,Clothing Trade Products Comprehensive Sales Store
+130403,茶叶-茶具零售店,Tea - tea retail store
+130404,烟酒制品零售店,Tobacco and Alcohol Products Retail Shop
+130405,地方土特产零售启,Local local specialty retail opening
+130406,副食品店,Non-staple food store
+130500,服装鞋幡皮具零售店,"Clothing, shoes and leather retail store"
+130501,服装店,Couture
+130502,皮具箱包店,Leather Luggage Shop
+130503,鞋帽店,Shoes and hat shop
+130600,钟表及珠宝首饰零售店,Clocks and jewelry retail store
+130601,钟表店,Watch shop
+130602,珠宝首饰店,Jewelry Shop
+130603,饰品店,Jewelry store
+130700,日用品零售店,Commodity retail stores
+130701,化妆品店,Cosmetics shop
+130702,母婴/儿童用品店,Maternal and Child Supplies Shop
+130703,眼镜店,Optical Shop
+130800,文体用品零售店,Retail store of sporting goods
+130801,办公用品店,Office Supplies Shop
+130802,体育用品及器材店,Sports Goods and Equipment Shop
+130803,户外用品店,Outdoor Shop
+130804,书店,Bookstore
+130805,报刊亭,News Kiosk
+130806,音像店,Video shop
+130807,乐器行,Musical instrument row
+130808,玩具店,Toyshop
+130809,艺术品店,Art shop
+130900,车辆销售店,Vehicle Sales Shop
+130901,汽车销售店,Automobile Sales Shop
+130902,汽车4S店,Auto 4S shop
+130903,二孚车交易店,Erfu Trading Shop
+130904,汽车零配件销售店,Auto Parts Sales Shop
+130905,摩托车零售店,Motorcycle retail store
+130906,摩托车零配件销售店,Motorcycle Parts Sales Shop
+130907,自行车零售店,Bicycle retail store
+130908,自行车零配件销售店,Bicycle Parts Sales Shop
+131000,家电数码零售店,Home Appliance Digital Retail Store
+131001,家电商场/家电卖场,Home Appliance Store/Home Appliance Store
+131002,电脑及耗材零售,Computer and Consumables Retail
+131003,数码电子零售店,Digital Electronic Retail Store
+131100,家居建材零售店,Home Building Materials Retail Shop
+131101,五金家装店,Hardware Home Decoration Shop
+131102,家具店/家具卖场,Furniture Shop/Furniture Store
+131103,家装建材店,Home Decoration Building Materials Shop
+131104,厨卫洁具店,Kitchen and Sanitary Ware Shop
+131105,灯饰店,Lighting shop
+131106,陶瓷地板,Ceramic floor
+131107,布艺窗帘店,Cloth Curtain Shop
+131108,家居用品店,Household goods store
+131200,花鸟虫鱼市场,"Flower, Bird, Insect and Fish Market"
+131201,花卉市场,flower market
+131202,宠物市场,Pet market
+131300,特色商业街,Characteristic Commercial Street
+131301,步行街,Pedestrian Street
+131400,专卖店,Exclusive shop
+131401,鲜花店,Flower shop
+131402,劳保用品店,Labor Insurance Supplies Store
+131403,自动售货机,Vending machine
+131404,宠物及宠物用品店,Pet and Pet Products Store
+131405,宗教用品店,Religious Goods Shop
+131406,丧葬用品店,Funeral Supplies Shop
+139900,其他购物场所,Other shopping places
+140000,卫生社保,Health social security
+140100,综合医院,general hospital
+140200,中医医院,Chinese medicine hospital
+140300,中西医综合医院,Comprehensive Hospital of Traditional Chinese and Western Medicine
+140400,民族医院,National Hospital
+140500,专科医院,Specialized hospital
+140501,口腔医院,Stomatological Hospital
+140502,眼科医院,Eye Hospital
+140503,耳鼻喉科医院,Department of ENT hospital
+140504,肿瘤医院,Tumor Hospital
+140505,心血管病医院,Cardiovascular Hospital
+140506,胸科医院,Chest Hospital
+140507,血液病医院,Hematological Hospital
+140508,妇产(科)医院,Obstetrics and Gynecology Hospital
+140509,儿童医院,Children's Hospital
+140510,精神病医院,Psychiatric Hospital
+140511,传染病医院,Infectious Disease Hospital
+140512,皮肤病医院,Dermatology Hospital
+140513,结核病医院,Tuberculosis Hospital
+140514,麻风病医院,Leprosy Hospital
+140515,职业病医院,Occupational disease hospital
+140516,骨科医院,General hospital
+140517,康复医院,Rehabilitation Hospital
+140518,整形外科医院,Plastic Surgery Hospital
+140519,美容医院,Beauty Hospital
+140600,疗养院,Sanatorium
+140700,护理院(站),Nursing Home (Station)
+140800,社区卫生服务中心,Community Health Centre
+140900,卫生院,Health center
+140901,街道卫生院,Street Health Center
+140902,乡镇卫生院,Township hospitals
+141000,诊所门珍,Clinic door Zhen
+141001,门诊部,The outpatient department
+141002,诊所,clinic
+141003,卫生所(站),Health Station
+141004,医务室,Clinic
+141005,中小学卫生保健所,Primary and secondary school health care center
+141006,村卫生室,Village clinic
+141100,急救中心(站),Emergency Center (Station)
+141200,采供血机构,Blood Transfusion Services
+141300,妇幼保健院,Maternal and Child Health Hospital
+141400,疾病预防控制机构,Disease Prevention and Control Agency
+141401,卫生防疫站,Health and epidemic prevention station
+141402,疾病预防控制中心,Centers for Disease Control and Prevention
+141403,体检机构,Physical examination institution
+141500,社会福利保障机构,Social Welfare Guarantee Institutions
+141501,养老院,Beadhouse
+141502,福利院,Welfare Centre
+141503,救助站,Rescue station
+141600,医药保健销售店,Medical and Health Sales Shop
+141601,药店,Pharmacy
+141602,医疗保健用品,Medical and health care supplies
+141700,动物医疗机构,Animal medical institutions
+141701,宠物医院,Pet hospital
+141702,兽医拈,Veterinarian
+141703,动物检疫,Animal quarantine
+149900,其他卫生社保机构,Other Health and Social Security Institutions
+150000,科教文化,Science and education culture
+150100,学校,School
+150101,幼儿园,Kindergarten
+150102,小学,Primary school
+150103,初中,Junior middle school
+150104,高中,high school
+150105,职业技术学校,Vocational and technical school
+150106,高等院校,Institutions of higher learning
+150107,成人教育学校,Adult Education School
+150108,党校,Party school
+150109,特殊教育学校,Special Education Schools
+150200,培训机构,Training institutions
+150201,职业技能培训,Vocational Skills Training
+150202,文体培训,Stylistic training
+150300,科研机构,scientific research institution
+150400,科教文化场馆,Science and Education Cultural Stadium
+150401,博物馆,Museum
+150402,科技馆,Science and Technology Museum
+150403,展览馆,Exhibition Hall
+150404,会展中心,Convention and Exhibition Center
+150405,美术馆,Art Gallery
+150406,图书馆,Library
+150407,天文馆,Planetarium
+150408,文化宫,Cultural Palace
+150409,档案馆,Archives
+150410,陈列馆,Exhibition Center
+150411,资料馆,Information library
+150500,文艺团体,literature and art organization
+150500,文化滔动中心,Center for Cultural Exchange
+150700,文化传媒,Cultural media
+150701,电视台,TV station
+150702,电台,radio station
+150703,出版社,Press
+150704,报社,Newspaper office
+150705,杂志社,Magazine
+150706,广电中心,Radio and TV Center
+150707,电影制片厂,Film Studios
+159900,其他科教文化,Other Scientific and Educational Cultures
+160000,体育休闲,Sports and leisure
+160100,体育场馆,Stadium and Gymnasium
+160101,综合体育馆,Comprehensive Stadium
+160102,户外健身场所,Outdoor Fitness Places
+160103,健身中心,Fitness Center
+160104,保龄球饿,Bowling hungry
+160105,网球场,Tennis court
+160106,篮球场馆,Basketball venue
+160107,足球场,Football Field
+160108,滑雪场,Ski Field
+160109,溜冰场,Skating rink
+160110,海滨浴场,Bathing beach
+160111,游泳馆/池,Swimming pool
+160112,乒乓球馆,Table Tennis Hall
+160113,台球厅,Billiard hall
+160114,壁球场,Squash court
+160115,马术俱乐部,The Saddle Club
+160116,赛马场,Racecourse
+160117,辙揽球场,Track court
+160118,羽毛球场,Badminton court
+160119,跆拳道场馆,Taekwondo Stadium
+160120,高尔夫球场,Golf Course
+160121,高尔夫练习场,Golf practice field
+160122,瑜伽馆,Yoga Gym
+160200,娱乐场所,Entertainment place
+160201,KTV,KTV
+160202,歌舞厅/夜总会,Song and dance hall/nightclub
+160203,酒吧,Bar
+160204,游戏厅/电玩城,Game Hall/Video City
+160205,棋牌室,Chess and card room
+160206,网吧,Internet Bar
+160207,博彩中心/彩票投注站,Gambling Center/Lottery Player
+160300,休闲度假,Leisure vacation
+160301,农家院,Farm House
+160302,采摘园,Picking garden
+160303,度假村,Resort
+160304,垂钓,Go fishing
+160305,会馆,Guild hall
+160400,影视剧院,Movie theater
+160401,电影院,Cinema
+160402,剧院,Theatre
+160403,戏院,Theater
+160404,音乐厅,Concert Hall
+160500,按摩美容保健场所,Massage Beauty and Health Care Place
+160501,足疗按摩店,Foot massage shop
+160502,美容美体店,Beauty and Body Shop
+160600,洗浴温泉场所,Bath Hot Spring Place
+160601,桑拿洗浴店,Sauna Bath Shop
+160602,温泉场所,Hot spring place
+169900,其他体育休闲场所,Other sports and leisure places
+170000,旅游景点,Scenic spot
+170100,自然景观-历史圣地类,Natural Landscape-Historic Holy Land
+170101,山岳类,Mountain type
+170102,岩洞类,Grottoes
+170103,江河类,River class
+170104,湖泊类,Lacustrine
+170105,海滨海岛类,Coastal Islands
+170106,特殊地貌类,Specified Landforms
+170107,城市风景类,Urban landscape
+170108,壁画石窟类,Grottos and Murals
+170200,人文景观,Places of historic figures and cultural heritage
+170201,纪念地类,Monuments
+170202,陵寝类,Mausoleum
+170203,民俗风情类,Folk Customs and Customs
+170204,寺庙观堂,Temple View Hall
+170205,文物保护单位,Cultural Relics Protection Unit
+170206,现代景观,Modern landscape
+170300,公园广场,Park Plaza
+170301,公园,Park
+170302,城市广场,city square
+170303,动物园,Zoo
+170304,植物园,Botanical Garden
+170305,水族馆,Aquarium
+170400,主题乐园,theme park
+170401,游乐园,Amusement Park
+170402,水乐园,Water paradise
+179900,其他旅游景点,Other tourist attractions
+180000,金融保险,Financial insurance
+180100,银行,Bank
+180200,自动提款机(ATM),ATM
+180300,信用社,Credit cooperative
+180400,金融公司,Finance company
+180401,证券公司,securities company
+180402,证券交易市场,securities market
+180403,财务公司,Finance company
+180404,典当行,Pawnshop
+180405,拍卖行,Auction house
+180406,投资公司,investment company
+180407,担保公司,Xie
+180408,信托公司,trust company
+180500,保险公司,Insurance company
+189900,其他金融保险机构,Other financial and insurance institutions
+190000,机关团体,Organ group
+190100,政府机构,Government organs
+190101,省-直辖市级党政机关,Party and Government Organs at the Provincial-Municipal Level
+190102,地市级党政机关,Party and government organs at prefectural and municipal levels
+190103,区县级党政机关,Party and government organs at district and county levels
+190104,乡镇级党政机关,Party and Government Organs at Township Level
+190105,外地政府办,Offshore Government Office
+190106,政府行政办公大厅,Government Executive Office Hall
+190200,事业单位,Government-affiliated institutions
+190201,国家级事业单位,State-level institutions
+190202,省-直辖市级事业单位,Institutions at the provincial-municipal level
+190203,地市级事业单位,Municipal Institutions
+190204,区县级事业单位,Institutions at district and county levels
+190205,乡镇级事业单位,Township-level institutions
+190300,基层自治组织,Grass-roots Autonomous Organizations
+190301,居委会,Neighborhood committee
+190302,付委会,Pay Committee
+190400,公检法机构,Institutions of Public Prosecution Law
+190401,公安局,Bureau of public security
+190402,交警队,Traffic police team
+190403,检察院,procuratorate
+190404,法院,Court
+190405,消防队,Fire brigade
+190406,公证鉴定机构,Notarial Appraisal Agency
+190407,社会治安机构,Social Security Institutions
+190408,安全岗亭,Safety post box
+190500,工商税务机构,Industrial and Commercial Taxation Institutions
+190501,国税局(所),State Tax Bureau (IRS)
+190502,地税局(所),Local Tax Bureau
+190503,工商局(所),Industrial and Commercial Bureau
+190500,车辆管理机构,Vehicle Management Agency
+190501,车管所,Vehicle administrative office
+190602,验车场,Inspection yard
+190603,执法站,Law enforcement station
+190700,国外机构,Foreign institutions
+190701,外国大使馆/领事馆,Foreign Embassies/Consulates
+190702,签证处,visa office
+190703,国外组织驻华机构,Foreign Organizations in China
+190800,民主党派,Democratic parties
+190900,社会团体/协会,Social groups/associations
+190901,群众团体-工会,Mass organizations - trade unions
+190902,妇联,Women's Federation
+190903,共青团,Communist Youth League
+191000,基金会,Foundation
+191100,宗教组织,Religious organization
+199900,其他机关团体,Other organ groups
+200000,交通运输,Transportation
+200100,航空服务及设施,Aviation services and facilities
+200101,民用机场,Civil Airport
+200102,航站楼,Terminal
+200103,民航货运站,Civil Aviation Freight Station
+200104,机场到达-出发口,Airport Arrival-Departure
+200200,铁路服务及设施,Railway services and facilities
+200201,火车站,Train station
+200202,货运火车站,Freight train station
+200203,火车站出入口,Railway station entrance and exit
+200300,城际公路交通服务及设施,Intercity Highway Traffic Services and Facilities
+200301,长途客运站,Bus Terminal
+200302,长途客运站出入口,Long-distance passenger station entrance and exit
+200303,货运汽车站,Freight Station
+200304,高速人口,High speed population
+200305,高速出口,High speed exit
+200400,城市轨道交通服务及设施,Urban rail transit services and facilities
+200401,轻轨/地铁站,Light Rail/Metro Station
+200402,轻轨/地铁站出人口,Light Rail/Metro Station Outgoing Population
+200403,磁悬浮站,Maglev station
+200404,磁悬浮出入口,Magnetic levitation exit
+200500,城市公共交通服务及设施,Urban public transport services and facilities
+200501,公交车站,Bus station
+200502,公交客运出入口,Bus exit and entry
+200503,出租车站,Taxi stand
+200504,出租车客运出入口,Taxi Passenger Entry and Exit
+200505,专线大巴站/班车站,Special line / shuttle bus station
+200506,自行车租车站,Bicycle Rental Station
+200507,道路出人口,Road out of population
+200500,水路服务及设施,Waterway services and facilities
+200501,港口/码头,Port/wharf
+200602,轮渡候船大厅,Ferry waiting hall
+200603,轮渡站出入口,Ferry Station Entrance and Exit
+200700,缆车服务及设施,Cable car service and facilities
+200701,缆车站,Cable station
+200702,缆车站出入口,Cable car exit and entrance
+200800,过境口岸,Transit port
+200900,收费站,Toll Gate
+200901,高速收费站,High Speed Toll Station
+200902,国省道收费姑,National Provincial Highway Charge Aunt
+200903,桥洞收费姑,Bridge-hole toll collector
+201000,服务区,Service area
+201001,高速服务区,High Speed Service Area
+201002,高速停车区,High Speed Parking Area
+201100,能源占,Energy accounts for
+201101,加油站,Gas station
+201102,加气站,Filling station
+201103,加油加气站,Gas station
+201104,电动汽车充电站,Electric vehicle charging station
+201200,停车场,Parking lot
+201201,换乘停车场,Transfer parking lot
+201202,公共停车场,Public Parking
+201203,专用停车场,Special parking lot
+201204,路边停车场,Roadside parking lot
+201205,自行车停车场,Bicycle park
+201300,桥梁隧道-立交桥,Bridge Tunnel-Overpass
+201301,过街天桥,Footbridge
+201302,桥梁,bridge
+201303,地下通道,Underground passage
+201304,隧道,Tunnel
+201400,通行设施,Access facilities
+201401,临街远门,Facing the street
+201402,建筑物门,Building door
+201500,城市道路名,Urban road names
+209900,其他交通运输服务及设施,Other transport services and facilities
+210000,生活服务,Life service
+210100,居民服务-家政服务,Resident Services - Home Economics Services
+210101,家电/数码维修,Home Appliances/Digital Maintenance
+210102,水电维修,Hydropower maintenance
+210103,家居维修,Home maintenance
+210104,钟表维修,Watch & Clock Repair
+210105,修鞋/修伞/皮包保养,Shoe repair/umbrella repair/bag maintenance
+210106,开锁/配钥匙,Unlock / key
+210107,搬家,House-moving
+210108,管道疏通,Rush Pipe
+210109,家敏,Jia Min
+210110,物业管理,Estate management
+210111,母婴服务,Maternal and infant services
+210200,日常服务,Daily service
+210201,洗衣,laundry
+210202,图文快印,Graphic and fast printing
+210203,照相馆,Photo Studio
+210204,理发店,Barber Shop
+210300,煤电水气,Coal electricity and water vapor
+210301,燃气公司网点,Dots
+210302,供暖公司网点,Heating Company Network
+210303,自来水公司网点,Water Company Network
+210304,有线电视公司网点,Dots
+210305,电力公司网点,Electric Power Company Network
+210400,邮电快递,Post and Telecommunications Express
+210401,邮局,Post Office
+210402,电信营业厅,Telecom Business Hall
+210403,物流快递,Logistics Express
+210500,票费服务,Fare service
+210501,车船机票销售点,Locomotive and Ship Ticket Point of Sale
+210502,演出票务,Tickets for performance
+210503,景点门票销售,Ticket sales of scenic spots
+210504,公交卡充筒点,Bus Card Filling Point
+210600,婚姻服务,Marriage service
+210601,婚纱摄影,Wedding photography
+210602,婚庆服务,Wedding Services
+210700,殡葬服务,Funeral services
+210701,殡葬服务中心/火葬场,Funeral Service Centre/Crematorium
+210702,基地陵园,Base cemetery
+210800,车辆服务,Vehicle service
+210801,汽车维修,Vehicle maintenance
+210802,汽车养护与装饰,Car Maintenance and Decoration
+210803,汽车租赁,Car Rental
+210804,汽车救援,Vehicle rescue
+210805,洗车,Car Wash
+210806,摩托车/电动车/自行车维修,Motorcycle/Electric Vehicle/Bicycle Maintenance
+210900,中介服务,Intermediary services
+210901,房屋中介,Letting agent
+210902,婚姻中介,Marriage agency
+210903,移民出国中介,Intermediary for emigration abroad
+210904,人才市场/人才服务中心,Talent Market/Talent Service Center
+211000,商务服务,Business services
+211001,律师率务所,Lawyer's Office
+211002,会计事务所,Accounting Firms
+211003,评估事务所,Assessment firms
+211004,审计事务所,Audit firms
+211005,认正事务所,Zhengzheng Office
+211006,专利事务所,patent agency
+211007,知识产权服务,Intellectual Property Services
+211008,旅行社,Travel Agency
+211100,公共设施,Communal facilities
+211101,公共电话,Public telephone
+211102,公共厕所,Comfort station
+211103,紧急避难场所,Emergency shelter
+211104,垃圾站点,Garbage sites
+211105,社区服务中心,Community Service Center
+211106,废品收购站,Waste Purchasing Station
+211107,消防设施,Fire protection facilities
+219900,其他生活服务,Other Life Services
+220000,房产园区与仓储,Real Estate Park and Warehousing
+220100,住宅区,Residential district
+220101,别墅,Villa
+220102,宿舍,dormitory
+220103,居民楼,Residential building
+220104,农村民居,Rural dwellings
+220200,产业园区,Industrial Park
+220201,产业园,Industrial Park
+220300,商业地产,Commercial real estate
+220301,商业大厦、写字楼,Office buildings
+220302,商住两周楼,Two-week commercial and residential buildings
+220400,售楼处,Sales Office
+220500,仓库,Warehouse
+229900,其他房产园区与仓储,Other Real Estate Parks and Warehousing
+230000,公司企业,Company business
+230100,公司,company
+230200,厂矿企业,factory and mining enterprises
+230300,农林牧渔业,"Agriculture, forestry, animal husbandry and fishery"
+230301,农业生产,agricultural production
+230302,林业生产,Forestry production
+230303,畜牧业生产,Animal husbandry production
+230304,渔业生产,Fishery production
+230305,农林牧渔服务业,"Agriculture, forestry, animal husbandry and Fishery Services"
+239900,其他公司企业,Other companies and enterprises
+240000,地各地址标识点,Location Location Identification Points
+240100,行政地名标识点,Administrative Place Name Identification Points
+240101,大洲名,Name of continent
+240102,国家名,Country name
+240103,省级地名,Provincial place names
+240104,直辖市级地名,Place names at the municipal level
+240105,地市级地名,Prefectural and municipal place names
+240106,区县级地名,Place names at district and county levels
+240107,乡镇级地名,Township-level place names
+240108,街道级地名,Street-level place names
+240109,衬庄社区级地名,Linzhuang Community-level Place Names
+240110,衬组级地名,Lining Group Toponym
+240111,社区名,Community name
+240112,集镇名,Name of town
+240113,区片名,District title
+240200,自然地名标识点,Natural Place Name Identification Points
+240201,海洋名,Ocean name
+240202,海湾海峡名,Name of Gulf Strait
+240203,岛屿名,Island name
+240204,山名,Mountain name
+240205,河流名,River name
+240206,湖泊名,Lake name
+240207,山谷、峡谷名,Names of valleys and canyons
+240208,洞口名,Entrance name
+240209,海岛名,Island name
+240210,山洞名,Cave name
+240211,泉名,Spring name
+240212,江心洲名,The name of Jiang Xin Zhou
+240300,"门牌信息""",Door Plate Information“
+240301,地名门牌,Place name plate
+240302,道路门牌,Road signs
+240303,小区门牌,District gate number
+240304,居民楼门牌,Resident Building Door Plate
+990000,其他兴趣点,Other points of interest
+200600,水路服务及设施,Waterway services and facilities
+190600,车辆管理机构,Vehicle management agency
