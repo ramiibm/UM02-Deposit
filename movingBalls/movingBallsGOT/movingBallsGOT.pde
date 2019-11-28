@@ -23,8 +23,8 @@ Ball balls[] = new Ball[ballNumber];
 Table gotTable;
 
 void setup() {
-  size(500, 500);
-  background(90, 130, 168);
+  size(900, 600);
+  background(0);
   
   gotTable = loadTable("GOT.csv", "header");
   
@@ -39,21 +39,12 @@ void setup() {
     if(score > 0.6) {
       if(characterNumber < ballNumber) {
         println(name + " has a score of " + score + " and is " + category);
-        randPosX = (int)random(40,170);//(int)Math.random() * 169 + 16;
-        randPosY = (int)random(40,170);//(int)Math.random() * 169 + 16;
+        randPosX = (int)random(50,150);//(int)Math.random() * 169 + 16;
+        randPosY = (int)random(50,150);//(int)Math.random() * 169 + 16;
         randSpeedX = (int)random(1,5);//(int)Math.random() * 169 + 16;
         randSpeedY = (int)random(1,5);//(int)Math.random() * 169 + 16;
-        println(category);
-        if(category.equals("mentioned")) {
-          println("character mentioned");
-          colorNb = 1;
-        } else if(category.equals("appears")) {
-          colorNb = 120;
-        } else if(category.equals("POV")) {
-          colorNb = 255;
-        }
         
-        balls[characterNumber] = new Ball(randPosX, randPosY, int(score*50), randSpeedX, randSpeedY, name, colorNb);
+        balls[characterNumber] = new Ball(randPosX, randPosY, int(score*85), randSpeedX, randSpeedY, name, category);
         println("New ball created number " + characterNumber);
       }
       characterNumber++;
@@ -62,10 +53,17 @@ void setup() {
 }
 
 void draw() {
-  background(90, 130, 168);
+  background(0);
+  
   for(int i=0; i < balls.length; i++){
     balls[i].moveBall();
     balls[i].display();
+    for(int j=0; j < balls.length; j++) {
+      if(i != j && balls[i].isClose(balls[j])) {
+        strokeWeight(4);
+        line(balls[i].getPosX(), balls[i].getPosY(), balls[j].getPosX(), balls[j].getPosY());
+      }
+    }
   }
 }
 
@@ -78,9 +76,9 @@ class Ball {
   int speedX;
   int speedY;
   String name;
-  int category;
+  String category;
 
-  Ball(int tempPosX, int tempPosY, int tempD, int tempSpeedX, int tempSpeedY, String tempName, int tempCat) {
+  Ball(int tempPosX, int tempPosY, int tempD, int tempSpeedX, int tempSpeedY, String tempName, String tempCat) {
     posX = tempPosX;
     posY = tempPosY;
     d = tempD;
@@ -90,11 +88,19 @@ class Ball {
     category = tempCat;
   }
   
+  int getPosX() {
+    return posX;
+  }
+  
+  int getPosY() {
+    return posY;
+  }
+  
   void moveBall() {
-    if (posX >= height - d/2 || posX <= d/2) {
+    if (posX >= width - d/2 || posX <= d/2) {
       dirh = -dirh;
     }
-    if (posY >= width - d/2 || posY <= d/2) {
+    if (posY >= height - d/2 || posY <= d/2) {
       dirv = -dirv;
     }
 
@@ -110,9 +116,34 @@ class Ball {
     }
   }
   
+  void colorBall() {
+    if(category.equals("mentioned")) {
+      stroke(153, 255, 233);
+      fill(153, 255, 233);
+    } else if(category.equals("appears")) {
+      stroke(1, 255, 233);
+      fill(1, 255, 233);
+    } else if(category.equals("POV")) {
+      stroke(60, 204, 197);
+      fill(60, 204, 197);
+    }
+  }
+  
+  boolean isClose(Ball nextBall) {
+    if(this.getPosX() > nextBall.getPosX() - 80 && this.getPosX() < nextBall.getPosX() + 80 && this.getPosY() > nextBall.getPosY() - 80 && this.getPosY() < nextBall.getPosY() + 80) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
   void display() {
     circle(posX, posY, d);
-    fill(category);
+    pushMatrix();
+    textAlign(CENTER);
+    popMatrix();   
+    fill(88);
     text(name, posX, posY);
+    colorBall();
   }
 }

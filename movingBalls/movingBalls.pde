@@ -38,7 +38,7 @@ void setup() {
   for(int i=0; i < balls.length; i++){
     randPosX = (int)random(15,185);//(int)Math.random() * 169 + 16;
     randPosY = (int)random(15,185);//(int)Math.random() * 169 + 16;
-    balls[i] = new Ball(randPosX, randPosY, score*10);
+    balls[i] = new Ball(randPosX, randPosY, 10);
   }  
   //ballOne = new Ball(100, 100, 30);
   //ballTwo = new Ball(20, 50, 30);
