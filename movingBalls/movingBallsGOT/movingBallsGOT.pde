@@ -44,7 +44,7 @@ void setup() {
         randSpeedX = (int)random(1,5);//(int)Math.random() * 169 + 16;
         randSpeedY = (int)random(1,5);//(int)Math.random() * 169 + 16;
         
-        balls[characterNumber] = new Ball(randPosX, randPosY, int(score*85), randSpeedX, randSpeedY, name, category);
+        balls[characterNumber] = new Ball(randPosX, randPosY, int(score*100), randSpeedX, randSpeedY, name, category);
         println("New ball created number " + characterNumber);
       }
       characterNumber++;
