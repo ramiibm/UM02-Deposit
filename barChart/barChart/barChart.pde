@@ -17,9 +17,6 @@ float chart_y_top = margin_y;
 
 float bar_space = 7;
 
-//Number of bars in the chart
-int bars_number = 2;
-
 //Max character score 
 float max_score = 0;
 //Scalable height factor
@@ -31,13 +28,21 @@ Table gotTable;
 //Bars ArrayList
 ArrayList <Bar> bars = new ArrayList<Bar>();
 
+int bars_limit = 33;
+
+PImage mask_img;// Declare a variable of type PImage
+
+
+
 void setup() {
   size(1200, 700);
 
   //Load Game of Thrones csv file
-  gotTable = loadTable("GOT.csv", "header");
+  gotTable = loadTable("data/GOT.csv", "header");
   
   println(gotTable.getRowCount() + " total rows in table");
+  
+  mask_img = loadImage("pictures/mask.png");  
   
   //Get character with the highest score & create associated bars (< bars_number)
   for(TableRow row : gotTable.rows()) {
@@ -45,10 +50,12 @@ void setup() {
     float score = row.getFloat("score");
     String name = row.getString("short_name");
     String category = row.getString("category");
+    String url = row.getString("url");
         
-    if(score > 0.7) {
+    if(score > 0.7 && bars.size() < bars_limit) {
         println(name + " has a score of " + score + " and " + category);
-        bars.add(new Bar(name, score));
+        println(url);
+        bars.add(new Bar(name, score, url));
         
         if(score > max_score) {
           max_score = score;
@@ -123,6 +130,7 @@ class Bar {
   
   //Character variables
   String char_name;
+  PImage char_img;  // Declare a variable of type PImage
   float char_score;
   
   float getBarHeight() {
@@ -151,12 +159,13 @@ class Bar {
     bar_y_origin = chart_y_origin - bar_height;
   }
   
-  Bar(String tmpName, float tmpScore) {
+  Bar(String tmpName, float tmpScore, String tmpUrl) {
     println("create a bar pls");
     char_name = tmpName;
     char_score = tmpScore;
+    char_img = loadImage("pictures/" + tmpUrl + ".jpeg");  
   }
-  
+
   void drawRect() {
     stroke(173,150,107);
     rect(bar_x_origin, bar_y_origin, bar_width, bar_height);
@@ -164,7 +173,8 @@ class Bar {
   
   void normalBars() {
     fill(246,236,223);
-    drawRect(); 
+    drawRect();     
+    //image(char_img, bar_x_origin, bar_y_origin + bar_height + 10, bar_width*1.5, bar_width*1.5);
   }
   
   void highligthtBar() {
@@ -175,5 +185,6 @@ class Bar {
     text(char_name, 0, 0);
     popMatrix();
     drawRect();
+    image(char_img, bar_x_origin - 2 * bar_width, bar_y_origin + bar_height + 20, bar_width*5, bar_width*5);
   }
 }
