@@ -58,29 +58,116 @@ function draw(data) {
 	  	.key(d => d.name)
 	  	.entries(data);
 
+	const playersNamesById = {};
+
+	nestByPlayerName.forEach(item => {
+		playersNamesById[item.key] = item.values[0].name;
+	});
+
 	const players = {};
 
 	d3.map(data, d => d.name)
 		.keys()
 		.forEach(function (d, i) {
-			players[d] = nestByPlayerName[i].values;
+			players[d] = {
+				data: nestByPlayerName[i].values,
+				enabled: true
+			};
 		});
 
-	const playerIds = Object.keys(players);
+	const playersIds = Object.keys(players);
 
 	const lineGenerator = d3.line()
 		.x(d => x(d.YearInNBA))
 		.y(d => y(d.PPG));
 
-	svg
-		.selectAll('.line')
-		.data(playerIds)
+	const legendContainer = d3.select('.legend');
+
+	const legends = legendContainer
+		.append('svg')
+		.attr('width', 150)
+		.attr('height', 353)
+		.selectAll('g')
+		.data(playersIds)
 		.enter()
-		.append('path')
-		.attr('class', 'line')
-		.attr('id', playerId => `player-${ playerId }`)
-		.attr('d', playerId => lineGenerator(players[playerId]))
-		.style('stroke', playerId => colorScale(playerId));
+		.append('g')
+		.attr('class', 'legend-item')
+		.attr('transform', (name, index) => `translate(0, ${ index * 20})`)
+		.on('click', clickLegendHandler);
+
+	legends.append('rect')
+		.attr('x', 0)
+		.attr('y', 0)
+		.attr('width', 12)
+		.attr('height', 12)
+		.style('fill', name => colorScale(name))
+		.select(function() { return this.parentNode; })
+		.append('text')
+		.attr('x', 20)
+		.attr('y', 10)
+		.text(name => name)
+		.attr('class', 'textselected')
+		.style('text-anchor', 'start')
+		.style('font-size', 12);
+
+	const extraOptionsContainer = legendContainer.append('div')
+		.attr('class', 'extra-options-container');
+
+	extraOptionsContainer.append('div')
+		.attr('class', 'hide-all-option')
+		.text('hide all')
+		.on('click', () => {
+			playersIds.forEach(playerName => {
+				players[playerName].enabled = false;
+			});
+
+			redrawChart();
+		});
+
+	extraOptionsContainer.append('div')
+		.attr('class', 'show-all-option')
+		.text('show all')
+		.on('click', () => {
+			playersIds.forEach(playerName => {
+				players[playerName].enabled = true;
+			});
+
+			redrawChart();
+		});
+
+	function redrawChart() {
+		const enabledPlayersId = playersIds.filter(playerName => players[playerName].enabled);
+
+		const paths = svg
+			.selectAll('.line')
+			.data(enabledPlayersId);
+
+		paths.exit().remove();
+
+		paths
+			.enter()
+			.append('path')
+			.merge(paths)
+			.attr('class', 'line')
+			.attr('id', playerId => `player-${ playerId }`)
+			.attr('d', playerId => lineGenerator(players[playerId].data))
+			.style('stroke', playerId => colorScale(playerId));
+
+		legends.each(function(playerName) {
+			const isEnabledPlayer = enabledPlayersId.indexOf(playerName) >= 0;
+
+			d3.select(this)
+				.classed('disabled', !isEnabledPlayer)
+		});
+	}
+
+	redrawChart();
+
+	function clickLegendHandler(playerName) {
+		players[playerName].enabled = !players[playerName].enabled;
+		
+		redrawChart();
+	}
 }
 
 

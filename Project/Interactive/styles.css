@@ -38,3 +38,27 @@ body {
   margin-top: 20px;
 }
 
+.legend-item {
+  cursor: pointer;
+}
+
+.legend-item:hover {
+  text-decoration: underline;
+}
+
+.extra-options-container {
+  font-size: 12px;
+  margin-top: 5px;
+  display: flex;
+  width: 110px;
+  justify-content: space-between;
+}
+
+.hide-all-option, .show-all-option {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.hide-all-option:hover, .show-all-option:hover {
+  text-decoration: none;
+}
