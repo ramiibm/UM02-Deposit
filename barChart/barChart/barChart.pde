@@ -63,6 +63,7 @@ void setup() {
     }
   }
   scale_chart_height();
+  println("height factor " + height_factor);
 }
 
 void draw() {
@@ -73,6 +74,9 @@ void draw() {
   
   //Draw characters bars
   drawBars();
+  
+  //Draw axis values
+  drawAxisValues();
 }
 
 void drawArrow(float cx, float cy, int len, float angle){
@@ -112,11 +116,32 @@ void drawBars() {
   for(int i=0; i<bars.size(); i++) {
     Bar my_bar = bars.get(i);
     if(my_bar.getBarXOrigin() < mouseX && mouseX < my_bar.getBarXOrigin() + my_bar.getBarWidth() && my_bar.getBarYOrigin() < mouseY && mouseY < my_bar.getBarYOrigin() + my_bar.getBarHeight()) {
-      my_bar.highligthtBar();
+      my_bar.highlightBar(true);
+    } else if(my_bar.getBarName().equals("Jon Snow")) {
+      my_bar.highlightBar(false);
     } else {
       my_bar.normalBars();
     }
   }
+}
+
+float round2Nb(float value) {
+  float round_value = Math.round(value*100);
+  return round_value/100;
+}
+
+void drawAxisValues() {  
+  //Define three axis values
+  float round_max = round2Nb(max_score);
+  float mid = round2Nb(0.5*max_score);
+  float third_quarter = round2Nb(0.75*max_score);
+  
+  //Write values 
+  fill(0, 0, 255);
+  text(round_max, 55,bars.get(1).getBarYOrigin() + max_score*height_factor); 
+  println(bars.get(7).getBarXOrigin() + max_score*height_factor);
+
+  //Draw associated lines
 }
 
 class Bar {
@@ -132,6 +157,10 @@ class Bar {
   String char_name;
   PImage char_img;  // Declare a variable of type PImage
   float char_score;
+  
+  String getBarName() {
+    return char_name;
+  }
   
   float getBarHeight() {
     return bar_height;
@@ -177,7 +206,7 @@ class Bar {
     //image(char_img, bar_x_origin, bar_y_origin + bar_height + 10, bar_width*1.5, bar_width*1.5);
   }
   
-  void highligthtBar() {
+  void highlightBar(boolean drawImg) {
     fill(71,55,35);
     pushMatrix();
     translate(bar_x_origin + bar_space/2, chart_y_origin - bar_height - bar_space*6);
@@ -185,6 +214,8 @@ class Bar {
     text(char_name, 0, 0);
     popMatrix();
     drawRect();
-    image(char_img, bar_x_origin - 2 * bar_width, bar_y_origin + bar_height + 20, bar_width*5, bar_width*5);
+    if(drawImg) {
+      image(char_img, bar_x_origin - 2 * bar_width, bar_y_origin + bar_height + 20, bar_width*4.5, bar_width*4.5);
+    }
   }
 }
