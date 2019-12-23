@@ -1,8 +1,40 @@
-.chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white;
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: Montserrat, sans-serif;
+  font-wight: 500;
+  font-size: 12px;
 }
+
+.root {
+  display: flex;
+}
+
+.axis text {
+  font-weight: bold;
+}
+
+.y-axis text {
+  text-anchor: end;
+}
+
+.axis path {
+  display: none;
+}
+
+.axis line {
+  stroke-opacity: 0.3;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.legend {
+  margin-top: 20px;
+}
+
