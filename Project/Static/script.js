@@ -7,7 +7,7 @@ var x = d3.scaleLinear()
 var chart = d3.select(".chart")
 		.attr("width", width);
 
-d3.csv("data.csv", function(error, data) {
+d3.csv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Static/data/data.csv', function(error, data) {
   if (error) throw error;
 
   x.domain([0, d3.max(data, function(d) { return d.value; })]);
