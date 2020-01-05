@@ -7,29 +7,29 @@ var x = d3.scaleLinear()
 var chart = d3.select(".chart")
 		.attr("width", width);
 
-d3.csv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Static/data/data.csv', function(error, data) {
-  if (error) throw error;
+d3.csv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Static/data/data.csv').then(data => draw(data));
 
+function draw(data) {
   x.domain([0, d3.max(data, function(d) { return d.value; })]);
   chart.attr("height", barHeight * data.length);
 
-  var bar = chart.selectAll("g")
-		.data(data)
-	.enter().append("g")
-		.attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+	var bar = chart.selectAll("g")
+      .data(data)
+    .enter().append("g")
+      .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
 
-bar.append("rect")
-		.attr('width', function(d) { return x(d.value); })
-		.attr('height', barHeight - 1);
+	bar.append("rect")
+      .attr("width", function(d) { return x(d.value); })
+      .attr("height", barHeight - 1);
 
-bar.append("text")
-		.attr('x', function(d) { return x(d.value) - 3; })
-		.attr('y', barHeight / 2)
-		.attr('dy', ".35em")
-		.text(function(d) { return d.value; });
-});
+	bar.append("text")
+      //.attr("x", function(d) { return x(d.value) - 3; })
+      .attr("y", barHeight / 2)
+      .attr("dy", ".35em")
+      .text(function(d) { return d.value; });
+}
 
 function type(d) {
-	d.value = +d.value;
-	return d;
+  d.value = +d.value; // coerce to number
+  return d;
 }
