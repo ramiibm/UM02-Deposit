@@ -62,3 +62,25 @@ body {
 .hide-all-option:hover, .show-all-option:hover {
   text-decoration: none;
 }
+
+.voronoi path {
+  fill: none;
+  pointer-events: all;
+}
+
+.voronoi-show path {
+  stroke: red;
+  stroke-opacity: 0.2;
+}
+
+.region-hover {
+  stroke: #000;
+  stroke-width: 4px;
+}
+
+.actions {
+  display: flex;
+  width: 681px;
+  padding-left: 49px;
+  justify-content: space-between;
+}

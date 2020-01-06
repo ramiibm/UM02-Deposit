@@ -1,3 +1,6 @@
+const ENABLED_OPACITY = 1;
+const DISABLED_OPACITY = 0.2;
+
 d3.csv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Interactive/data/data.csv').then(data => draw(data));
 
 function draw(data) {
@@ -30,7 +33,7 @@ function draw(data) {
 	
 	const xAxis = d3.axisBottom(x)
 		.ticks((width + 2) / (height + 2) * 5)
-		.tickSize( - height - 6)
+		.tickSize( - height)
 		.tickPadding(10);
 
 	const yAxis = d3.axisRight(y)
@@ -55,27 +58,41 @@ function draw(data) {
 		.call(d3.axisLeft(y).ticks(0));
 
 	const nestByPlayerName = d3.nest()
-	  	.key(d => d.name)
+	  	.key(d => d.name.replace(/\s/g, ""))
 	  	.entries(data);
 
 	const playersNamesById = {};
 
 	nestByPlayerName.forEach(item => {
-		playersNamesById[item.key] = item.values[0].name;
+		console.log(item);
+		playersNamesById[item.key] = item.values[0].Player;
 	});
 
 	const players = {};
+	const playersLabels = {};
 
-	d3.map(data, d => d.name)
+	d3.map(data, d => d.Player)
 		.keys()
 		.forEach(function (d, i) {
-			players[d] = {
+			players[d.replace(/\s/g, "")] = {
+				data: nestByPlayerName[i].values,
+				enabled: true
+			};
+		});
+
+	d3.map(data, d => d.Player)
+		.keys()
+		.forEach(function (d, i) {
+			playersLabels[d] = {
 				data: nestByPlayerName[i].values,
 				enabled: true
 			};
 		});
 
 	const playersIds = Object.keys(players);
+	const playersNames = Object.keys(playersLabels);
+	console.log(players);
+	console.log(playersNames);
 
 	const lineGenerator = d3.line()
 		.x(d => x(d.YearInNBA))
@@ -88,7 +105,7 @@ function draw(data) {
 		.attr('width', 150)
 		.attr('height', 353)
 		.selectAll('g')
-		.data(playersIds)
+		.data(playersNames)
 		.enter()
 		.append('g')
 		.attr('class', 'legend-item')
@@ -121,6 +138,8 @@ function draw(data) {
 				players[playerName].enabled = false;
 			});
 
+			singleLineSelected = false;
+
 			redrawChart();
 		});
 
@@ -131,14 +150,37 @@ function draw(data) {
 			playersIds.forEach(playerName => {
 				players[playerName].enabled = true;
 			});
+			singleLineSelected = false;
 
 			redrawChart();
 		});
 
-	function redrawChart() {
-		const enabledPlayersId = playersIds.filter(playerName => players[playerName].enabled);
+	const linesContainer = svg.append('g');
 
-		const paths = svg
+	let singleLineSelected = false;
+
+	const voronoi = d3.voronoi()
+		.x(d => x(d.YearInNBA))
+		.y(d => y(d.PPG))
+		.extent([[0, 0], [width, height]]);
+
+	const voronoiGroup = svg.append('g')
+		.attr('class', 'voronoi-parent')
+		.append('g')
+		.attr('class', 'voronoi');
+
+	d3.select('#show-voronoi')
+		.property('disabled', false)
+		.on('change', function() {
+			voronoiGroup.classed('voronoi-show', this.checked);
+		});
+
+	redrawChart();
+
+	function redrawChart(showingPlayersIds) {
+		const enabledPlayersId = showingPlayersIds || playersIds.filter(playerName => players[playerName].enabled);
+
+		const paths = linesContainer
 			.selectAll('.line')
 			.data(enabledPlayersId);
 
@@ -154,19 +196,77 @@ function draw(data) {
 			.style('stroke', playerId => colorScale(playerId));
 
 		legends.each(function(playerName) {
-			const isEnabledPlayer = enabledPlayersId.indexOf(playerName) >= 0;
+			const opacityValue = enabledPlayersId.indexOf(playerName.replace(/\s/g, "")) >= 0 ? ENABLED_OPACITY : DISABLED_OPACITY;
 
-			d3.select(this)
-				.classed('disabled', !isEnabledPlayer)
+			d3.select(this).attr('opacity', opacityValue);
 		});
+
+		const filteredData = data.filter(dataItem => enabledPlayersId.indexOf(dataItem.name.replace(/\s/g, "")) >= 0 );
+		console.log(filteredData);
+
+		const voronoiPaths = voronoiGroup.selectAll('path')
+			.data(voronoi.polygons(filteredData));
+
+
+		voronoiPaths.exit().remove();
+
+		voronoiPaths
+			.enter()
+			.append('path')
+			.merge(voronoiPaths)
+			.attr('d', d => (d ? `M${ d.join('L') }Z` : null))
+			.on('mouseover', voronoiMouseover)
+			.on('mouseout', voronoiMouseout)
+			.on('click', voronoiClick);
 	}
 
-	redrawChart();
-
 	function clickLegendHandler(playerName) {
-		players[playerName].enabled = !players[playerName].enabled;
+		const playerID = playerName.replace(/\s/g, "");
+
+		if(singleLineSelected) {
+			const newEnabledPlayers = singleLineSelected === playerID ? [] : [singleLineSelected, playerID];
+
+			playersIds.forEach(currentPlayerName => {
+				players[currentPlayerName].enabled = newEnabledPlayers.indexOf(currentPlayerName) >= 0;
+			});
+		} else {
+			players[playerID].enabled = !players[playerID].enabled;
+		}
+		singleLineSelected = false;
 		
 		redrawChart();
+	}
+
+	function voronoiMouseover(d) {
+		if(d) {
+			d3.select(`#player-${ d.data.name.replace(/\s/g, "") }`).classed('region-hover', true);
+			console.log(d3.select("#player-Dwyane\\Wade"));
+
+		}
+	}
+
+	function voronoiMouseout(d) {
+		if (d) {
+			d3.select(`#player-${ d.data.name.replace(/\s/g, "") }`).classed('region-hover', false);
+		}
+	}
+
+	function voronoiClick(d) {
+
+		console.log('click');
+		if (singleLineSelected) {
+
+			singleLineSelected = false;
+			redrawChart();
+
+		} else {
+			const playerName = d.data.name.replace(/\s/g, "");
+
+			singleLineSelected = playerName;
+			console.log(playerName);
+
+			redrawChart([playerName]);
+		}
 	}
 }
 
