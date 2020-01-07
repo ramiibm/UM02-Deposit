@@ -91,41 +91,64 @@ function draw(data) {
 
 	const playersIds = Object.keys(players);
 	const playersNames = Object.keys(playersLabels);
-	console.log(players);
-	console.log(playersNames);
 
 	const lineGenerator = d3.line()
 		.x(d => x(d.YearInNBA))
 		.y(d => y(d.PPG));
 
+	const nestByYear = d3.nest()
+		.key(d => d.YearInNBA)
+		.entries(data);
+
+	const ppgBySeason = {};
+
+	nestByYear.forEach(seasonItem => {
+		ppgBySeason[seasonItem.key] = {};
+		seasonItem.values.forEach(player => {
+			ppgBySeason[seasonItem.key][player.name] = player.PPG;
+		});
+	});
+
 	const legendContainer = d3.select('.legend');
 
-	const legends = legendContainer
-		.append('svg')
-		.attr('width', 150)
-		.attr('height', 353)
+	const legendsSvg = legendContainer
+		.append('svg');
+
+	const legendsDate = legendsSvg.append('text')
+		.attr('visibility', 'hidden')
+		.attr('x', 0)
+		.attr('y', 10);
+
+	const legends = legendsSvg
+		.attr('width', 210)
+		.attr('height', 373)
 		.selectAll('g')
 		.data(playersNames)
 		.enter()
 		.append('g')
 		.attr('class', 'legend-item')
-		.attr('transform', (name, index) => `translate(0, ${ index * 20})`)
+		.attr('transform', (name, index) => `translate(0, ${ index * 20 + 20})`)
 		.on('click', clickLegendHandler);
 
-	legends.append('rect')
+	const legendsValue = legends
+		.append('text')
 		.attr('x', 0)
+		.attr('y', 10)
+		.attr('class', 'legend-value');
+	
+	legends.append('rect')
+		.attr('x', 58)
 		.attr('y', 0)
 		.attr('width', 12)
 		.attr('height', 12)
 		.style('fill', name => colorScale(name))
 		.select(function() { return this.parentNode; })
 		.append('text')
-		.attr('x', 20)
+		.attr('x', 78)
 		.attr('y', 10)
 		.text(name => name)
-		.attr('class', 'textselected')
-		.style('text-anchor', 'start')
-		.style('font-size', 12);
+		.attr('class', 'legend-text')
+		.style('text-anchor', 'start');;
 
 	const extraOptionsContainer = legendContainer.append('div')
 		.attr('class', 'extra-options-container');
@@ -164,10 +187,24 @@ function draw(data) {
 		.y(d => y(d.PPG))
 		.extent([[0, 0], [width, height]]);
 
-	const voronoiGroup = svg.append('g')
+	const hoverDot = svg.append('circle')
+		.attr('class', 'dot')
+		.attr('r', 3)
+		.style('visibility', 'hidden');
+
+	let voronoiGroup = svg.append('g')
 		.attr('class', 'voronoi-parent')
 		.append('g')
-		.attr('class', 'voronoi');
+		.attr('class', 'voronoi')
+		.on('mouseover', () => {
+			legendsDate.style('visibility', 'visible');
+			hoverDot.style('visibility', 'visible');
+		})
+		.on('mouseout', () => {
+			legendsValue.text('');
+			legendsDate.style('visibility', 'hidden');
+			hoverDot.style('visibility', 'hideen');
+		});
 
 	d3.select('#show-voronoi')
 		.property('disabled', false)
@@ -244,19 +281,32 @@ function draw(data) {
     };
 
 	function voronoiMouseover(d) {
-		if(d) {
-			d3.select(`#player-${ d.data.name.replace(/\s/g, "") }`)
-				.classed('region-hover', true)
-				.moveToFront();
-			console.log(d3.select("#player-Dwyane\\Wade"));
-
+		if (Math.floor(d.data.YearInNBA) == 0) {
+			legendsDate.text('1st year in league.');
+		} else if(Math.floor(d.data.YearInNBA) == 1) {
+			legendsDate.text('2nd year in league.');
+		} else if(Math.floor(d.data.YearInNBA) == 2) {
+			legendsDate.text('3rd year in league.');
+		} else {
+			legendsDate.text((Math.floor(d.data.YearInNBA)+1) + 'th year in league.');
 		}
+
+		legendsValue.text(dataItem => {
+			const value = Math.round( ppgBySeason[d.data.YearInNBA][dataItem] * 10 ) / 10;
+			return value ? value + ' PPG' : 'N.A.';
+		});
+
+		d3.select(`#player-${ d.data.name.replace(/\s/g, "") }`)
+			.classed('region-hover', true)
+			.moveToFront();
+
+		hoverDot
+			.attr('cx', () => x(d.data.YearInNBA))
+			.attr('cy', () => y(d.data.PPG));
 	}
 
 	function voronoiMouseout(d) {
-		if (d) {
-			d3.select(`#player-${ d.data.name.replace(/\s/g, "") }`).classed('region-hover', false);
-		}
+		d3.select(`#player-${ d.data.name.replace(/\s/g, "") }`).classed('region-hover', false);
 	}
 
 	function voronoiClick(d) {
