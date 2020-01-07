@@ -69,7 +69,7 @@ body {
 }
 
 .voronoi-show path {
-  stroke: red;
+  stroke: grey;
   stroke-opacity: 0.2;
 }
 
