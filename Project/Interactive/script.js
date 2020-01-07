@@ -1,7 +1,7 @@
 const ENABLED_OPACITY = 1;
 const DISABLED_OPACITY = 0.2;
 
-d3.csv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Interactive/data/data.csv').then(data => draw(data));
+d3.csv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Interactive/data.csv').then(data => draw(data));
 
 function draw(data) {
 	
