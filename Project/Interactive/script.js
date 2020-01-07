@@ -14,7 +14,21 @@ function draw(data) {
 	const y = d3.scaleLinear().range([height, 0]);
 
 	const colorScale = d3.scaleOrdinal()
-    	.range(['#4c78a8', '#9ecae9', '#f58518', '#ffbf79']);
+    	.range(["#6e64cf",
+				"#5bb250",
+				"#c556bc",
+				"#a7b53f",
+				"#aa7bc3",
+				"#d79a29",
+				"#5a8fcc",
+				"#d75339",
+				"#4cae90",
+				"#d43f71",
+				"#707d37",
+				"#9d496c",
+				"#cf995a",
+				"#e28297",
+				"#a35a34"]);
 
 	const svg = d3.select('.chart')
 		.append('svg')
