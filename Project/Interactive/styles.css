@@ -4,7 +4,7 @@ body {
   -ms-user-select: none;
   user-select: none;
   font-family: Montserrat, sans-serif;
-  font-wight: 500;
+  font-weight: 500;
   font-size: 12px;
 }
 
@@ -25,7 +25,7 @@ body {
 }
 
 .axis line {
-  stroke-opacity: 0.3;
+  stroke-opacity: .5;
 }
 
 .line {
@@ -69,8 +69,8 @@ body {
 }
 
 .voronoi-show path {
-  stroke: grey;
-  stroke-opacity: 0.2;
+  stroke: #83bdad;
+  stroke-opacity: 0.25;
 }
 
 .region-hover {
