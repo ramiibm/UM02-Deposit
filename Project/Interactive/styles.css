@@ -70,7 +70,7 @@ body {
 
 .voronoi-show path {
   stroke: #83bdad;
-  stroke-opacity: 0.25;
+  stroke-opacity: 0.15;
 }
 
 .region-hover {

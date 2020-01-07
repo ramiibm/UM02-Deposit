@@ -15,13 +15,13 @@ function draw(data) {
 
 	const colorScale = d3.scaleOrdinal()
     	.range(["#c78143",
+    			"#4bafd0",
 				"#b25bc4",
 				"#6cb543",
 				"#7178ca",
 				"#bdad46",
 				"#56b07e",
 				"#cb4f42",
-				"#4bafd0",
 				"#667731"]);
 
 	const svg = d3.select('.chart')
@@ -69,10 +69,13 @@ function draw(data) {
 	  	.key(d => d.name.replace(/\s/g, ""))
 	  	.entries(data);
 
+	const nestByPlayerLabel = d3.nest()
+	  	.key(d => d.name)
+	  	.entries(data);
+
 	const playersNamesById = {};
 
 	nestByPlayerName.forEach(item => {
-		console.log(item);
 		playersNamesById[item.key] = item.values[0].Player;
 	});
 
@@ -100,6 +103,23 @@ function draw(data) {
 	const playersIds = Object.keys(players);
 	const playersNames = Object.keys(playersLabels);
 
+	const collegePlayersNamesById = {};
+	const highSchoolPlayersNamesById = {};
+
+	nestByPlayerLabel.forEach(item => {
+		console.log(item.values[0].wentToCollege);
+		if (item.values[0].wentToCollege == 'True') {
+			collegePlayersNamesById[item.key] = item.values[0].Player;
+		} else {
+			highSchoolPlayersNamesById[item.key] = item.values[0].Player;
+		}
+	});
+
+	const collegePlayersNames = Object.keys(collegePlayersNamesById);
+	const highSchoolPlayersNames = Object.keys(highSchoolPlayersNamesById);
+
+	console.log(highSchoolPlayersNames);
+
 	const lineGenerator = d3.line()
 		.x(d => x(d.YearInNBA))
 		.y(d => y(d.PPG));
@@ -119,32 +139,78 @@ function draw(data) {
 
 	const legendContainer = d3.select('.legend');
 
-	const legendsSvg = legendContainer
+	const legendsSvg1 = legendContainer
+		.attr('width', 200)
+		.attr('height', 100)
 		.append('svg');
 
-	const legendsDate = legendsSvg.append('text')
+	const legendsSvg2 = legendContainer
+		.attr('width', 200)
+		.attr('height', 100)
+		.append('svg');
+
+	const legendsDate = legendsSvg1.append('text')
 		.attr('visibility', 'hidden')
 		.attr('x', 0)
 		.attr('y', 10);
 
-	const legends = legendsSvg
-		.attr('width', 210)
-		.attr('height', 373)
+	const legendsCollegeTitle = legendsSvg1.append('text')
+		.attr('y', 30)
+		.text("Players that went to College.")
+		.attr('visibility', 'visible')
+		.attr('class', 'extra-options-container');
+
+	const legendsCollege = legendsSvg1
 		.selectAll('g')
-		.data(playersNames)
+		.data(collegePlayersNames)
 		.enter()
 		.append('g')
 		.attr('class', 'legend-item')
 		.attr('transform', (name, index) => `translate(0, ${ index * 20 + 20})`)
 		.on('click', clickLegendHandler);
 
-	const legendsValue = legends
+	const legendsCollegeValue = legendsCollege
+		.append('text')
+		.attr('x', 0)
+		.attr('y', 35)
+		.attr('class', 'legend-value');
+	
+	legendsCollege.append('rect')
+		.attr('x', 58)
+		.attr('y', 25)
+		.attr('width', 12)
+		.attr('height', 12)
+		.style('fill', name => colorScale(name))
+		.select(function() { return this.parentNode; })
+		.append('text')
+		.attr('x', 78)
+		.attr('y', 35)
+		.text(name => name)
+		.attr('class', 'legend-text')
+		.style('text-anchor', 'start');
+
+	const legendsHighSchoolTitle = legendsSvg2.append('text')
+		.attr('y', 10)
+		.text("Players that didn't go to College.")
+		.attr('visibility', 'visible')
+		.attr('class', 'extra-options-container');
+
+	const legendsHighSchool = legendsSvg2
+		.selectAll('g')
+		.data(highSchoolPlayersNames)
+		.enter()
+		.append('g')
+		.attr('class', 'legend-item')
+		.attr('transform', (name, index) => `translate(0, ${ index * 20 + 20})`)
+		.on('click', clickLegendHandler);
+
+	const legendsHighSchoolValue = legendsHighSchool
 		.append('text')
 		.attr('x', 0)
 		.attr('y', 10)
 		.attr('class', 'legend-value');
 	
-	legends.append('rect')
+	legendsHighSchool.append('rect')
 		.attr('x', 58)
 		.attr('y', 0)
 		.attr('width', 12)
@@ -156,7 +222,7 @@ function draw(data) {
 		.attr('y', 10)
 		.text(name => name)
 		.attr('class', 'legend-text')
-		.style('text-anchor', 'start');;
+		.style('text-anchor', 'start');
 
 	const extraOptionsContainer = legendContainer.append('div')
 		.attr('class', 'extra-options-container');
@@ -209,7 +275,8 @@ function draw(data) {
 			hoverDot.style('visibility', 'visible');
 		})
 		.on('mouseout', () => {
-			legendsValue.text('');
+			legendsCollegeValue.text('');
+			legendsHighSchoolValue.text('');
 			legendsDate.style('visibility', 'hidden');
 			hoverDot.style('visibility', 'hideen');
 		});
@@ -240,7 +307,13 @@ function draw(data) {
 			.attr('d', playerId => lineGenerator(players[playerId].data))
 			.style('stroke', playerId => colorScale(playerId));
 
-		legends.each(function(playerName) {
+		legendsCollege.each(function(playerName) {
+			const opacityValue = enabledPlayersId.indexOf(playerName.replace(/\s/g, "")) >= 0 ? ENABLED_OPACITY : DISABLED_OPACITY;
+
+			d3.select(this).attr('opacity', opacityValue);
+		});
+		
+		legendsHighSchool.each(function(playerName) {
 			const opacityValue = enabledPlayersId.indexOf(playerName.replace(/\s/g, "")) >= 0 ? ENABLED_OPACITY : DISABLED_OPACITY;
 
 			d3.select(this).attr('opacity', opacityValue);
@@ -299,7 +372,12 @@ function draw(data) {
 			legendsDate.text((Math.floor(d.data.YearInNBA)+1) + 'th year in league.');
 		}
 
-		legendsValue.text(dataItem => {
+		legendsCollegeValue.text(dataItem => {
+			const value = Math.round( ppgBySeason[d.data.YearInNBA][dataItem] * 10 ) / 10;
+			return value ? value + ' PPG' : 'N.A.';
+		});
+
+		legendsHighSchoolValue.text(dataItem => {
 			const value = Math.round( ppgBySeason[d.data.YearInNBA][dataItem] * 10 ) / 10;
 			return value ? value + ' PPG' : 'N.A.';
 		});
