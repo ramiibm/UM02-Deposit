@@ -237,9 +237,17 @@ function draw(data) {
 		redrawChart();
 	}
 
+	d3.selection.prototype.moveToFront = function() {  
+      return this.each(function(){
+        this.parentNode.appendChild(this);
+      });
+    };
+
 	function voronoiMouseover(d) {
 		if(d) {
-			d3.select(`#player-${ d.data.name.replace(/\s/g, "") }`).classed('region-hover', true);
+			d3.select(`#player-${ d.data.name.replace(/\s/g, "") }`)
+				.classed('region-hover', true)
+				.moveToFront();
 			console.log(d3.select("#player-Dwyane\\Wade"));
 
 		}
