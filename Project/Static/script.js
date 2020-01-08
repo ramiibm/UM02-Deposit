@@ -7,8 +7,12 @@ var x = d3.scaleLinear()
 var chart = d3.select(".chart")
 		.attr("width", width);
 
-d3.tsv("https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Static/data/data.tsv", type, function(error, data) {
-  console.log(data);
+d3.tsv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Static/data/data.tsv', type, function(error, data) {
+  if (error) throw error;
+  console.log('in tsv()')
+});
+
+//d3.tsv("", type, function(error, data) {
  //  x.domain([0, d3.max(data, function(d) { return d.value; })]);
  //  chart.attr("height", barHeight * data.length);
 
@@ -26,9 +30,10 @@ d3.tsv("https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/St
  //      .attr("y", barHeight / 2)
  //      .attr("dy", ".35em")
  //      .text(function(d) { return d.value; });
-});
+//});
 
 function type(d) {
-  //d.Height = +d.Height; // coerce to number
+  console.log(d);
+  d.Height = +d.Height; // coerce to number
   return d;
 }
