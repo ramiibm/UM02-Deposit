@@ -52,6 +52,16 @@ body {
   display: flex;
   width: 110px;
   justify-content: space-between;
+  border: solid 1px black;
+}
+
+.legend-title {
+  font-size: 12px;
+  margin-top: 5px;
+  display: flex;
+  width: 110px;
+  justify-content: space-between;
+  border: solid 1px black;
 }
 
 .hide-all-option, .show-all-option {

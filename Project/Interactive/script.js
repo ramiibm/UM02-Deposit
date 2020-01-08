@@ -103,20 +103,35 @@ function draw(data) {
 	const playersIds = Object.keys(players);
 	const playersNames = Object.keys(playersLabels);
 
-	const collegePlayersNamesById = {};
-	const highSchoolPlayersNamesById = {};
+	const collegePlayersLabelsById = {};
+	const collegePlayersById = {};
+
+	const highSchoolPlayersLabelsById = {};
+	const highSchoolPlayersById = {};
 
 	nestByPlayerLabel.forEach(item => {
 		console.log(item.values[0].wentToCollege);
 		if (item.values[0].wentToCollege == 'True') {
-			collegePlayersNamesById[item.key] = item.values[0].Player;
+			collegePlayersLabelsById[item.key] = item.values[0].Player;
 		} else {
-			highSchoolPlayersNamesById[item.key] = item.values[0].Player;
+			highSchoolPlayersLabelsById[item.key] = item.values[0].Player;
 		}
 	});
 
-	const collegePlayersNames = Object.keys(collegePlayersNamesById);
-	const highSchoolPlayersNames = Object.keys(highSchoolPlayersNamesById);
+	nestByPlayerName.forEach(item => {
+		console.log(item.values[0].wentToCollege);
+		if (item.values[0].wentToCollege == 'True') {
+			collegePlayersById[item.key] = item.values[0].Player;
+		} else {
+			highSchoolPlayersById[item.key] = item.values[0].Player;
+		}
+	});
+
+	const collegePlayersNames = Object.keys(collegePlayersLabelsById);
+	const collegePlayersIds = Object.keys(collegePlayersById);
+	const highSchoolPlayersNames = Object.keys(highSchoolPlayersLabelsById);
+	const highSchoolPlayersIds = Object.keys(highSchoolPlayersById);
+
 
 	console.log(highSchoolPlayersNames);
 
@@ -140,14 +155,20 @@ function draw(data) {
 	const legendContainer = d3.select('.legend');
 
 	const legendsSvg1 = legendContainer
-		.attr('width', 200)
+		.attr('width', 500)
 		.attr('height', 100)
 		.append('svg');
 
+	const collegeExtraOptionsContainer = legendContainer.append('div')
+		.attr('class', 'extra-options-container');
+
 	const legendsSvg2 = legendContainer
-		.attr('width', 200)
+		.attr('width', 300)
 		.attr('height', 100)
 		.append('svg');
+
+	const highschoolExtraOptionsContainer = legendContainer.append('div')
+		.attr('class', 'extra-options-container');
 
 	const legendsDate = legendsSvg1.append('text')
 		.attr('visibility', 'hidden')
@@ -155,10 +176,10 @@ function draw(data) {
 		.attr('y', 10);
 
 	const legendsCollegeTitle = legendsSvg1.append('text')
+		.attr('class', 'legend-title')
 		.attr('y', 30)
 		.text("Players that went to College.")
-		.attr('visibility', 'visible')
-		.attr('class', 'extra-options-container');
+		.attr('visibility', 'visible');
 
 	const legendsCollege = legendsSvg1
 		.selectAll('g')
@@ -189,11 +210,36 @@ function draw(data) {
 		.attr('class', 'legend-text')
 		.style('text-anchor', 'start');
 
+	collegeExtraOptionsContainer.append('div')
+		.attr('class', 'hide-all-option')
+		.text('hide group')
+		.on('click', () => {
+			collegePlayersIds.forEach(playerName => {
+				players[playerName].enabled = false;
+			});
+
+			singleLineSelected = false;
+
+			redrawChart();
+		});
+
+	collegeExtraOptionsContainer.append('div')
+		.attr('class', 'show-all-option')
+		.text('show group')
+		.on('click', () => {
+			collegePlayersIds.forEach(playerName => {
+				players[playerName].enabled = true;
+			});
+			singleLineSelected = false;
+
+			redrawChart();
+		});
+
 	const legendsHighSchoolTitle = legendsSvg2.append('text')
+		.attr('class', 'legend-title')
 		.attr('y', 10)
 		.text("Players that didn't go to College.")
-		.attr('visibility', 'visible')
-		.attr('class', 'extra-options-container');
+		.attr('visibility', 'visible');
 
 	const legendsHighSchool = legendsSvg2
 		.selectAll('g')
@@ -223,6 +269,31 @@ function draw(data) {
 		.text(name => name)
 		.attr('class', 'legend-text')
 		.style('text-anchor', 'start');
+
+	highschoolExtraOptionsContainer.append('div')
+		.attr('class', 'hide-all-option')
+		.text('hide group')
+		.on('click', () => {
+			highSchoolPlayersIds.forEach(playerName => {
+				players[playerName].enabled = false;
+			});
+
+			singleLineSelected = false;
+
+			redrawChart();
+		});
+
+	highschoolExtraOptionsContainer.append('div')
+		.attr('class', 'show-all-option')
+		.text('show group')
+		.on('click', () => {
+			highSchoolPlayersIds.forEach(playerName => {
+				players[playerName].enabled = true;
+			});
+			singleLineSelected = false;
+
+			redrawChart();
+		});
 
 	const extraOptionsContainer = legendContainer.append('div')
 		.attr('class', 'extra-options-container');
