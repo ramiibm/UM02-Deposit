@@ -3,7 +3,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-family: Montserrat, sans-serif;
+  font-family: Open Sans, sans-serif;
   font-weight: 500;
   font-size: 12px;
 }
@@ -25,17 +25,13 @@ body {
 }
 
 .axis line {
-  stroke-opacity: .5;
+  stroke-opacity: 0.3;
 }
 
 .line {
   fill: none;
   stroke: steelblue;
   stroke-width: 1.5px;
-}
-
-.legend {
-  margin-top: 20px;
 }
 
 .legend-item {
@@ -50,18 +46,9 @@ body {
   font-size: 12px;
   margin-top: 5px;
   display: flex;
-  width: 110px;
+  width: 100px;
+  margin-left: 57px;
   justify-content: space-between;
-  border: solid 1px black;
-}
-
-.legend-title {
-  font-size: 12px;
-  margin-top: 5px;
-  display: flex;
-  width: 110px;
-  justify-content: space-between;
-  border: solid 1px black;
 }
 
 .hide-all-option, .show-all-option {
@@ -80,7 +67,7 @@ body {
 
 .voronoi-show path {
   stroke: #83bdad;
-  stroke-opacity: 0.15;
+  stroke-opacity: 0.2;
 }
 
 .region-hover {
@@ -90,7 +77,18 @@ body {
 
 .actions {
   display: flex;
+  width: 732px;
+  justify-content: space-between;
+}
+
+.actions {
+  display: flex;
   width: 681px;
   padding-left: 49px;
   justify-content: space-between;
+}
+
+.legendGroupContainer {
+  padding-top: 20px;
+  height: 100px;
 }

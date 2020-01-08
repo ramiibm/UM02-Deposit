@@ -163,9 +163,8 @@ function draw(data) {
 		.attr('class', 'extra-options-container');
 
 	const legendsSvg2 = legendContainer
-		.attr('width', 300)
-		.attr('height', 100)
-		.append('svg');
+		.append('svg')
+		.attr('class', 'legendGroupContainer');
 
 	const highschoolExtraOptionsContainer = legendContainer.append('div')
 		.attr('class', 'extra-options-container');
@@ -473,7 +472,6 @@ function draw(data) {
 
 			singleLineSelected = false;
 			redrawChart();
-
 		} else {
 			const playerName = d.data.name.replace(/\s/g, "");
 

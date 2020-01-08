@@ -1,15 +1,30 @@
 .chart rect {
-  fill: steelblue;
+  fill: #E6D3AE;
+}
+
+.chart .line {
+	fill: none;	
+	stroke: #807561;
+	stroke-width: 2;
+}
+
+.chart {
+  display: flex; 
+}
+
+h1, h2, h3 {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .chart text {
-  fill: white;
+  fill: black;
   font: 10px sans-serif;
   text-anchor: end;
 }
 
 .axis text {
-  font: 10px sans-serif;
+  font: 15px sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .axis path,

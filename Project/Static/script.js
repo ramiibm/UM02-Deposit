@@ -26,12 +26,19 @@ d3.tsv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/St
   chart.append('g')
       .attr('class', 'x axis')
       .attr('transform', 'translate(0,' + height + ')')
-      .call(xAxis);
+      .call(xAxis)
+    .append('text')
+      .attr('class', 'legend-text')
+      .attr('y', 20)
+      .attr('x', 920)
+      .style('text-anchor', 'end')
+      .text('Season');
 
   chart.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append('text')
+      .attr('class', 'legend-text')
       .attr('transform', 'rotate(-90)')
       .attr('y', 6)
       .attr('dy', '.71em')
@@ -41,11 +48,8 @@ d3.tsv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/St
   var barWidth = width / data.length;
 
   trendlineCoordinates = [];
-  //trendlineCoordinates['mean'] = {};
-  //trendlineCoordinates['season']={};
 
   data.forEach(function (dataItem, index) {
-    //trendlineCoordinates['season'][index] = dataItem.Season;
     if (index == 0) {
       trendlineCoordinates.push({'season': dataItem.Season, 'mean': dataItem.Height});
     } else {
@@ -73,22 +77,17 @@ d3.tsv('https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/St
   const linesContainer = chart.append('g');
 
   const paths = linesContainer
-      .selectAll('.line')
-        .data(indexId);
+    .selectAll('.line')
+      .data(indexId);
 
   paths.exit().remove();
 
   paths
-      .enter().append('path')
-      .merge(paths)
-        .attr('class', 'line')
-        .attr('id', 'trendline')
-        .attr('d', index => lineGenerator(trendlineCoordinates))
-        .attr('stroke', 'red')
-        .attr('stroke-width', 2)
-        .attr('fill', 'none');
-
-  
+    .enter().append('path')
+    .merge(paths)
+      .attr('class', 'line')
+      .attr('id', 'trendline')
+      .attr('d', index => lineGenerator(trendlineCoordinates));
 });
 
 function type(d) {
