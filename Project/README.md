@@ -17,7 +17,12 @@ Not surprisingly, the town center stands out in this map. Shanghai does indeed h
 ## Interactive Visualization
 ![][image-3]
 
-
+This line chart, designed in d3js, shows the mean of points per game, season by season, of nine iconic NBA players. The data comes from a Kaggle dataset, based on basketball-reference.com data. 
+### An interactive visualization
+The interactivity resides in the various ways set up to ease the visualisation of the lines. 
+* First of all, it’s possible for the user to display and hide lines by clicking on the players’ name in the legend.
+* Then, when hovering over the graph, the closest point to the mouse will display itself, and the line associated will be emphasised. The value of this point will then written down on the legend, as well as other players’ means. If the user clicks on the graph, the emphasised line will be displayed alone for the user to understand well the player evolution in his scoring. Then, a new click will sent the user back to the previous state. 
+* To compute the closest point to the mouse, we used Voronoi paths. It’s possible for the user to display, to understand how the graph is cut out, depending on the amount of lines displayed.
 
 [image-1]:	mapdemo.gif
 [image-2]:	https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/images/barChart.png
