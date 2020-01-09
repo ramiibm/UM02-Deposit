@@ -5,6 +5,9 @@ This folder contains three data viz, designed within the course _Data Science: A
 
 ## Static Visualization
 ## Interactive Visualization
-![](demo.gif)
+![][image-1]
+![][image-2]
 
 
+[image-1]:	demo.gif
+[image-2]:	demo.gif
