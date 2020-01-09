@@ -5,7 +5,6 @@ This folder contains three data viz, designed within the course _Data Science: A
 
 ## Static Visualization
 ## Interactive Visualization
-![]()([https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Interactive/data/images/demo.gif][2])
+![]()(demo.gif)
 
 
-[2]:	https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Interactive/data/images/demo.gif
