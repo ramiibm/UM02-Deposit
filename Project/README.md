@@ -5,4 +5,4 @@ This folder contains three data viz, designed within the course _Data Science: A
 [img][1]
 
 
-[1]:	https://github.com/ramiibm/UM02-Deposit/blob/master/Project/Interactive/data/images/demo.gif?raw=true "Interactive Viz Demo"
+[1]:	[https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/Interactive/data/images/demo.gif] "Interactive Viz Demo"
