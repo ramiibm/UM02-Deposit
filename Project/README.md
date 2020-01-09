@@ -10,4 +10,4 @@ This folder contains three data viz, designed within the course _Data Science: A
 
 
 [image-1]:	demo.gif
-[image-2]:	demo.gif
+[image-2]:	mapdemo.gif
