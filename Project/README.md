@@ -13,10 +13,12 @@ The study focuses on the city of Shanghai, so we centered the map around it. The
 Not surprisingly, the town center stands out in this map. Shanghai does indeed have a strong downtown core, around its touristic parts as Jing’an or Huangpu.
 
 ## Static Visualization
-## Interactive Visualization
 ![][image-2]
+## Interactive Visualization
+![][image-3]
 
 
 
 [image-1]:	mapdemo.gif
-[image-2]:	demo.gif
+[image-2]:	https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/images/barChart.png
+[image-3]:	demo.gif
