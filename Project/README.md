@@ -18,7 +18,7 @@ Not surprisingly, the town center stands out in this map. Shanghai does indeed h
 ## Interactive Visualization
 ![][image-3]
 
-This line chart, designed in d3js, shows the mean of points per game, season by season, of nine iconic NBA players. The data comes from a Kaggle dataset, based on basketball-reference.com data. 
+This line chart, designed in d3js, shows the mean of points per game, by the number of seasons in the league, of nine iconic NBA players. The data comes from a Kaggle dataset, based on basketball-reference.com data. 
 ### An interactive visualization
 The interactivity resides in the various ways set up to ease the visualisation of the lines. 
 * First of all, it’s possible for the user to display and hide lines by clicking on the players’ name in the legend.
@@ -26,6 +26,10 @@ The interactivity resides in the various ways set up to ease the visualisation o
 * If the user clicks on the graph, the emphasised line will be displayed alone for the user to understand well the player evolution in his scoring. Then, a new click will sent the user back to the previous state (meaning that if lines were hidden before the click, they’ll stay hidden). 
 * To compute the closest point to the mouse, we used Voronoi diagrams. It’s possible for the user to display it, to understand how the graph is cut out, depending on the amount of lines displayed. Each cell corresponds to a point, and is used to say which point is being hovering.
 * Finally, buttons are available to hide and show all lines, or groups.
+
+### Data Interpretation
+First of all, thanks to this graph, we get to compare the career evolution of various iconic players of the 2000s. This way, it’s possible to understand which players were the more ‘_NBA Ready_’ at their arrival, and completely took over their team offence upon their arrival (hello LeBron, KD, & Duncan), or which player had to develop themselves before reaching their prime (hello Kobe & T-Mac). 
+An interesting point of view is that there is a correlation between the early careers of these players and the fact that they played college basketball or not. However, the graph shows that they almost all reach their prime around their sixth season.
 
 [image-1]:	mapdemo.gif
 [image-2]:	https://raw.githubusercontent.com/ramiibm/UM02-Deposit/master/Project/images/barChart.png
