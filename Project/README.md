@@ -23,7 +23,7 @@ The trend-line added on top of the bars allows the user to see clearly the evolu
 
 ### Data Interpretation
 This dataset shows a phenomenon that is exploding today more than never. Big men are using spacing (created by the democratisation of the 3-point shot as the number one weapon of almost every teams) and the offensive pace the league has been playing on these years to control the game flow. We are seeing players using their gifted size, as well as incredible handle and court vision stand out. This data viz shows that the playmaking, especially the one offered by pick-and-roll and spacing, is more and more controlled by these players, rather than small guards.
-As there has always been big playmakers, showing the size of top assists would not have been really interesting. We wanted to show instead a special stat, the assist for a 3-point shot, to show the shift in today’s NBA.
+As there has always been big playmakers, showing the size of top assists would not have been really interesting. We wanted to show instead a special stat, the assist for a 3-point shot, to show the shift in today’s NBA, starting from the 4 previous seasons.
 As the actual season isn’t finished yet, we couldn’t implement it inside our vis. But the result would have been greater than the last season, as this season is a breaking record one.
 
 ## Interactive Visualization
